@@ -35,6 +35,8 @@ const DesktopSidebar = () => {
   // Find the route that exactly matches the pathname or falls back to the home route.
   const activeRoute = routes.find(route => route.href !== "/" && pathname.includes(route.href)) || routes[0]
 
+  const [Open, setOpen] = useState(false)
+
   return (
     <div className="hidden relative md:block max-w-[280px] h-screen overflow-hidden w-full bg-primary/5 dark:bg-secondary/30 dark:text-foreground text-muted-foreground border-r-2">
       <div className="flex items-center justify-center gap-2 border-b border-separate p-4">
@@ -51,7 +53,9 @@ const DesktopSidebar = () => {
             className={buttonVariants({
               variant: activeRoute.href === route.href ? "sidebarActiveItem" : "sidebarItem"
             })}
-          >
+         onClick={() => setOpen((prev)=> !prev)}
+         
+         >
             <route.icon size={20} />
             {route.label}
           </Link>

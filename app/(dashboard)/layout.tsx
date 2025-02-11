@@ -3,6 +3,7 @@ import { Separator } from "@/components/ui/separator"
 import DesktopSidebar from '@/components/SideBar'
 import { ModeToggle } from '@/components/theme/mode-toggle'
 import BreadcrumHeader from '@/components/BreadcrumHeader'
+import { SignedIn, UserButton } from '@clerk/nextjs'
 
 const layout = ({children}: {children : ReactNode}) => {
   return (
@@ -12,8 +13,11 @@ const layout = ({children}: {children : ReactNode}) => {
         <header className='flex items-center justify-between px-6 py-5 h-[50px]
         container'>
             <BreadcrumHeader />
-            <div className="gap-1 flex items-center">
+            <div className="gap-2 flex items-center">
             <ModeToggle/>
+            <SignedIn>
+                <UserButton/>
+            </SignedIn>
             </div>
            
         </header>
